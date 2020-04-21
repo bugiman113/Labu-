@@ -3,16 +3,17 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
 import java.util.Objects;
-
 /**
- * Этот класс описывает Chapter
+ * Этот класс описывает SpaceMarine
  */
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Chapter implements Serializable {
     private String name; //Поле не может быть null, Строка не может быть пустой
     private String parentLegion;
     private int marinesCount; //Поле может быть null, Значение поля должно быть больше 0, Максимальное значение поля: 1000
     public Chapter(){}
-    public Chapter(String name1, String parentLegion, int marinesCount){
+    public  Chapter(String name1,String parentLegion, int marinesCount){
         this.name=name1;
         this.parentLegion=parentLegion;
         this.marinesCount=marinesCount; }

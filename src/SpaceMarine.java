@@ -6,13 +6,17 @@ import java.io.Serializable;
 import java.time.Instant;
 import java.util.Date;
 import java.util.Objects;
-///**
-// * Эти теги нужны для записи xml
-// */
-//@XmlRootElement
-//@XmlAccessorType(XmlAccessType.FIELD)
-//@XmlType(propOrder = {"name","id","coordinates","creationDate","health","loyal","height","category","chapter"})
+/**
+ * Эти теги нужны для записи xml
+ */
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
+@XmlType(propOrder = {"name","id","coordinates","creationDate","health","loyal","height","category","chapter"})
 
+
+/**
+ * Этот класс описывает SpaceMarine
+ */
 public class SpaceMarine implements Serializable {
     private long id; //Значение поля должно быть больше 0, Значение этого поля должно быть уникальным, Значение этого поля должно генерироваться автоматически
     private String name; //Поле не может быть null, Строка не может быть пустой
@@ -27,7 +31,7 @@ public class SpaceMarine implements Serializable {
     public SpaceMarine() {
     }
 
-    public SpaceMarine(String name, Coordinates coordinates1, Float health, boolean loyal, Float height2, AstartesCategory category, Chapter chapter1,Long id) {
+    public SpaceMarine(String name, Coordinates coordinates1, Float health, boolean loyal, Float height2, AstartesCategory category, Chapter chapter1, Long id) {
         this.name = name;
         this.coordinates = coordinates1;
         creationDate =  java.util.Date.from(Instant.now());
@@ -49,6 +53,7 @@ public class SpaceMarine implements Serializable {
         this.loyal = loyal;
         this.chapter = chapter1;
     }
+
 
     public int getCoordinates() {
         return this.coordinates.getX() + this.coordinates.getY();
@@ -104,3 +109,4 @@ public class SpaceMarine implements Serializable {
         return chapter;
     }
 }
+

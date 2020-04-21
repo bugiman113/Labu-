@@ -1,11 +1,15 @@
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+@XmlRootElement
+@XmlAccessorType(XmlAccessType.FIELD)
 /**
  * Этот класс описывает координаты
  */
 public class Coordinates implements Serializable {
-    private int x; //Поле не может быть null
-    private int y; //Значение поля должно быть больше -463
-
+    private int x;
+    private int y;
     public Coordinates(){}
     public Coordinates(int x1, int y1) {
         x = x1;
