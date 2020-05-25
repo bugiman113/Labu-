@@ -1,0 +1,85 @@
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
+
+public class Ellips {
+
+    private JComponent b;
+    private int hexSize = 6;
+    private JScrollPane view;
+    public static String[] arr=new String[13];
+
+    public Ellips() throws Exception {
+        int n =10;
+        for (int i = 0; i < 13; i++) {
+               arr[i]="abcd";
+        }
+        b = new JComponent() {
+
+            private static final long serialVersionUID = 1L;
+
+            @Override
+            public Dimension getPreferredSize() {
+                int w=1250;
+                if(arr.length<12){
+                w=(arr.length*100)+45;
+                }
+                return new Dimension(w, 200);
+            }
+
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                Graphics2D g2d = ((Graphics2D) g);
+                int b2 =arr.length;
+                g2d.setStroke(new BasicStroke( 3.5f));
+                g.setColor(Color.black);
+                Font FONT = new Font("Serif", Font.PLAIN, 20);
+                g.setFont(FONT);
+                g.drawString("Вот ваша коллекция:",50,50);
+                int x=-70;
+                int y=80;
+                int ys=110;
+                int xs=-40;
+                for(int i=0;i<b2;i++) {
+                    g2d.setColor(Color.GREEN);
+                    x=x+100;
+                    if(x>1200) {
+                     x=30;
+                     y=y+70;
+                     ys=ys+70;
+                     xs=-40;
+                    }
+                    g2d.drawRoundRect(x, y, 90, 50, 20, 30);
+                    xs=xs+100;
+                    g.drawString(arr[i], xs, ys);
+                }
+            }
+        };
+        System.out.println(b.getPreferredSize());
+        view = new JScrollPane(b);
+        view.setPreferredSize(new Dimension(300, 300));
+        JFrame f = new JFrame("Test");
+        f.setLocation(10, 10);
+        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        JButton button = new JButton("PROVERKA");
+        f.add(button);
+        f.add(view);
+        f.setPreferredSize(new Dimension(500,500));
+        f.pack();
+        f.setVisible(true);
+    }
+
+    public static void main(String[] args) {
+        EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Ellips example = new Ellips();
+                } catch (Exception ex) {
+                    //
+                }
+            }
+        });
+    }
+}
